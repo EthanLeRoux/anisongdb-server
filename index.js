@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 9090;
-const songRoutes = require('./routes/songroutes');
+require('dotenv').config();
 
+const port = process.env.PORT;
+const songRoutes = require('./routes/songroutes');
 app.listen(port,(error)=>{
     if(!error){
         console.log('Listening on port 9090')

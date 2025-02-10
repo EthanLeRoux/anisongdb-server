@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const pool = require('../db');
 
 //get all songs
 router.get('/',(req,res)=>{
@@ -20,9 +21,10 @@ router.get('/:id', (req, res)=>{
     }
 })
 
-router.post('/new',(req,res)=>{
+router.post('/',(req,res)=>{
     try{
-
+        const{title, engtitle, lyrics} = req.params.body;
+        pool.query('INSERT INTO song (title, eng_title, lyrics) VALUES (`${title}`)')
     }
     catch(e){
         res.status(500).send({error: e.message})
