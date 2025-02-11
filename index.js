@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
-
 const port = process.env.PORT;
 const songRoutes = require('./routes/songroutes');
 app.listen(port,(error)=>{
@@ -13,4 +12,5 @@ app.listen(port,(error)=>{
     }
 })
 
+app.use(express.json());
 app.use('/songs', songRoutes);
